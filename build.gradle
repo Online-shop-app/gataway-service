@@ -35,7 +35,7 @@ ext {
     set('mapStructVersion', '1.2.0.Final')
     set('spockVersion', '2.0-groovy-3.0')
     set('testcontainersVersion', '1.16.0')
-    set('commonsLang3Version', '3.9')
+    set('commonsLang3Version', '3.12.0')
     set('commonsCollectionsVersion', '3.2.2')
 }
 
@@ -47,21 +47,22 @@ dependencyManagement {
 }
 
 dependencies {
+    implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-reactor-resilience4j'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'de.codecentric:spring-boot-admin-starter-client'
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 
     implementation 'org.jetbrains:annotations:23.0.0'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-log4j2'
-    implementation 'org.zalando:logbook-spring-boot-starter:2.4.1'
+    implementation 'org.zalando:logbook-spring-boot-starter:2.14.0'
     implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
     implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin'
     runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
-    implementation 'org.springdoc:springdoc-openapi-webflux-ui:1.5.2'
+    implementation 'org.springdoc:springdoc-openapi-webflux-ui:1.6.6'
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

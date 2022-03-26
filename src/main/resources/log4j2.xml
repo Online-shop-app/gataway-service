@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
     <Properties>
-        <Property name="app-name">demo-service</Property>
+        <Property name="app-name">gateway-service</Property>
         <Property name="console.thresholdFilter">ALL</Property>
         <Property name="pattern">%style{%d{ISO8601}} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %style{%notEmpty{[${app-name},%X{traceId},%X{spanId},%X{spanExportable}]}}{bright,green} %msg%n%throwable</Property>
     </Properties>
@@ -47,6 +47,14 @@
             <AppenderRef ref="FILE_APPENDER"/>
         </Logger>
         <Logger name="com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver" level="WARN" additivity="false">
+            <AppenderRef ref="CONSOLE"/>
+            <AppenderRef ref="FILE_APPENDER"/>
+        </Logger>
+        <Logger name="org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator" level="WARN" additivity="false">
+            <AppenderRef ref="CONSOLE"/>
+            <AppenderRef ref="FILE_APPENDER"/>
+        </Logger>
+        <Logger name="org.springframework.cloud.gateway" level="INFO" additivity="false">
             <AppenderRef ref="CONSOLE"/>
             <AppenderRef ref="FILE_APPENDER"/>
         </Logger>
