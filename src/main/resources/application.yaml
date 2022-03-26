@@ -31,6 +31,13 @@ spring:
       default-filters:
         - TokenRelay=
         - RemoveRequestHeader=Cookie
+      routes:
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/order-service/**
+          filters:
+            - RewritePath=/order-service/, /
 
 management:
   endpoints.web.exposure.include: '*'
