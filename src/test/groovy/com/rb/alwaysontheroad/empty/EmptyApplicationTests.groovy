@@ -1,4 +1,4 @@
-package com.rb.alwaysontheroad.empty;
+package com.rb.alwaysontheroad.gateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

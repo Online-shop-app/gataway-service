@@ -22,8 +22,6 @@ spring:
             authorization-grant-type: authorization_code
             redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
             scope: openid, profile
-  sleuth:
-    reactor.instrumentation-type: decorate-on-each
   zipkin.base-url: 'http://localhost:9411'
   boot.admin.client.url: 'http://localhost:5050'
   cloud:
@@ -38,6 +36,14 @@ spring:
             - Path=/order-service/**
           filters:
             - RewritePath=/order-service/, /
+
+com.rb.alwaysontheroad.gateway:
+  http-client:
+    max-connections: 500
+    max-idle-time: 20_000
+    max-life-time: 60_000
+    pending-acquire-timeout: 60_000
+    evict-in-background: 120_000
 
 management:
   endpoints.web.exposure.include: '*'

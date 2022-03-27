@@ -1,4 +1,4 @@
-package com.rb.alwaysontheroad.empty.config;
+package com.rb.alwaysontheroad.gateway.config;
 
 import brave.Tracer;
 import lombok.extern.slf4j.Slf4j;

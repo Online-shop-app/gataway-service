@@ -1,4 +1,4 @@
-package com.rb.alwaysontheroad.empty.config;
+package com.rb.alwaysontheroad.gateway.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;

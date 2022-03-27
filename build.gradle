@@ -1,7 +1,6 @@
 plugins {
     id 'org.springframework.boot' version '2.6.5'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'application'
     id 'java'
 }
 
@@ -9,9 +8,9 @@ group = 'com.rb.alwaysontheroad'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
-
-application {
-    applicationDefaultJvmArgs = ['-Xms128M', '-Xmx256M', '-XX:ActiveProcessorCount=2', '-Dspring.zipkin.enabled=false']
+bootRun {
+    systemProperties = System.properties
+    jvmArgs = ['-Xms128M', '-Xmx256M', '-XX:ActiveProcessorCount=2', '-Dspring.zipkin.enabled=false']
 }
 
 configurations {
