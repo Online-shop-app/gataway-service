@@ -10,7 +10,7 @@ sourceCompatibility = '11'
 
 bootRun {
     systemProperties = System.properties
-    jvmArgs = ['-Xms128M', '-Xmx256M', '-XX:ActiveProcessorCount=2', '-Dspring.zipkin.enabled=false']
+    jvmArgs = ['-Xms128M', '-Xmx256M', '-XX:ActiveProcessorCount=2', '-Dspring.profiles.active=local']
 }
 
 configurations {
@@ -49,6 +49,8 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-reactor-resilience4j'
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'de.codecentric:spring-boot-admin-starter-client'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'

@@ -58,6 +58,10 @@
             <AppenderRef ref="CONSOLE"/>
             <AppenderRef ref="FILE_APPENDER"/>
         </Logger>
+        <Logger name="org.springframework.cloud.config" level="DEBUG" additivity="false">
+            <AppenderRef ref="CONSOLE"/>
+            <AppenderRef ref="FILE_APPENDER"/>
+        </Logger>
         <Logger name="org.springframework.security" level="INFO" additivity="false">
             <AppenderRef ref="CONSOLE"/>
             <AppenderRef ref="FILE_APPENDER"/>

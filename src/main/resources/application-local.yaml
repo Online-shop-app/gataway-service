@@ -1,0 +1,20 @@
+eureka:
+  client:
+    serviceUrl.defaultZone: 'http://localhost:8761/eureka/'
+
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/auth/realms/shop-realm
+        registration:
+          keycloak:
+            client-id: shop-client
+            client-secret: 2185762e-6c91-4d11-a240-8ac4fcd598dd
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
+            scope: openid, profile
+  zipkin.enabled: false
+  boot.admin.client.url: 'http://localhost:5050'
