@@ -3,18 +3,16 @@ eureka:
     serviceUrl.defaultZone: 'http://localhost:8761/eureka/'
 
 spring:
-  security:
-    oauth2:
-      client:
-        provider:
-          keycloak:
-            issuer-uri: http://localhost:8080/auth/realms/shop-realm
-        registration:
-          keycloak:
-            client-id: shop-client
-            client-secret: 2185762e-6c91-4d11-a240-8ac4fcd598dd
-            authorization-grant-type: authorization_code
-            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
-            scope: openid, profile
+  cloud.discovery.enabled: true
   zipkin.enabled: false
+  boot.admin.client.enabled: false
   boot.admin.client.url: 'http://localhost:5050'
+  security.oauth2.client:
+    registration:
+      keycloak:
+        client-id: chat-client
+        client-secret: 'f1b4f4c7-7d2d-4b16-af5d-7ead0d076f03'
+#        client-secret: ${ONLINE_SHOP_CHAT_CLIENT_SECRET} ENV NOT WORKING
+    provider:
+      keycloak:
+        issuer-uri: 'http://localhost:7070/auth/realms/online-shop'

@@ -32,6 +32,7 @@ public class SecurityConfig {
                 .oauth2Login(withDefaults());
 
         return http
+                .httpBasic().disable()
                 .csrf().disable()
                 .build();
     }

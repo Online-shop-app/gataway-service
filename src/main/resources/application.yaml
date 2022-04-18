@@ -19,6 +19,20 @@ spring:
             - Path=/order-service/**
           filters:
             - RewritePath=/order-service/, /
+        - id: chat-service
+          uri: lb://chat-service
+          predicates:
+            - Path=/chat-service/**
+          filters:
+            - RewritePath=/chat-service/, /
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
+            scope: openid, profile
 
 com.rb.alwaysontheroad.gateway:
   http-client:
