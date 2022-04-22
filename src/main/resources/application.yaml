@@ -25,6 +25,12 @@ spring:
             - Path=/chat-service/**
           filters:
             - RewritePath=/chat-service/, /
+        - id: chat-service-ws
+          uri: lb:ws://chat-service
+          predicates:
+            - Path=/chat-service/stomp-websocket/**
+          filters:
+            - RewritePath=/chat-service/stomp-websocket/, /stomp-websocket/
   security:
     oauth2:
       client:

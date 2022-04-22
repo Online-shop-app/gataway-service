@@ -7,7 +7,6 @@ import reactor.netty.http.client.HttpClient;
 import reactor.netty.resources.ConnectionProvider;
 import reactor.netty.transport.logging.AdvancedByteBufFormat;
 
-import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 
 @Configuration
@@ -25,6 +24,6 @@ public class AppConfig {
                         .evictInBackground(Duration.ofMillis(clientProps.getEvictInBackground()))
                         .build()
                 )
-                .wiretap("reactor.netty.http.client.HttpClient", LogLevel.DEBUG, AdvancedByteBufFormat.TEXTUAL, StandardCharsets.UTF_8);
+                .wiretap("reactor.netty.http.client.HttpClient", LogLevel.DEBUG, AdvancedByteBufFormat.TEXTUAL);
     }
 }
