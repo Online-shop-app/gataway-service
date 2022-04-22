@@ -1,10 +1,14 @@
 package com.rb.alwaysontheroad.gateway.config;
 
 import brave.Tracer;
+import com.rb.alwaysontheroad.gateway.config.decorator.BodyCaptureExchange;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.server.ServerWebExchange;
+import org.springframework.web.server.WebFilter;
+import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
 import java.util.Optional;
@@ -30,5 +34,20 @@ public class FilterConfig {
                             .orElse(DEFAULT_TRACE_ID);
                     exchange.getResponse().getHeaders().add(TRACE_ID_HEADER, traceId);
                 }));
+    }
+
+    /**
+     * Request/response body logger filter
+     */
+    @Bean
+    public WebFilter requestResponseLoggerFilter() {
+        return (ServerWebExchange serverWebExchange, WebFilterChain webFilterChain) -> {
+            BodyCaptureExchange bodyCaptureExchange = new BodyCaptureExchange(serverWebExchange);
+
+            return webFilterChain.filter(bodyCaptureExchange).doOnSuccess((se) -> {
+                log.info("Request body: '{}'", bodyCaptureExchange.getRequest().getFullBody());
+                log.info("Response body: '{}'", bodyCaptureExchange.getResponse().getFullBody());
+            });
+        };
     }
 }
