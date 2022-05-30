@@ -21,6 +21,7 @@ import java.util.Optional;
 public class FilterConfig {
     private static final String TRACE_ID_HEADER = "traceId";
     private static final String DEFAULT_TRACE_ID = "no-trace-id";
+    private static final String EMPTY = "no content";
 
     /**
      * Response adder Spring Cloud Sleuth's 'requestId' adder filer
@@ -45,8 +46,10 @@ public class FilterConfig {
             BodyCaptureExchange bodyCaptureExchange = new BodyCaptureExchange(serverWebExchange);
 
             return webFilterChain.filter(bodyCaptureExchange).doOnSuccess((se) -> {
-                log.info("Request body: '{}'", bodyCaptureExchange.getRequest().getFullBody());
-                log.info("Response body: '{}'", bodyCaptureExchange.getResponse().getFullBody());
+                String requestBody = bodyCaptureExchange.getRequest().getFullBody();
+                String responseBody = bodyCaptureExchange.getResponse().getFullBody();
+                log.debug("Request body: '{}'", requestBody != null ? requestBody : EMPTY);
+                log.debug("Response body: '{}'", responseBody != null ? requestBody : EMPTY);
             });
         };
     }

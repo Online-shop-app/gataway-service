@@ -38,19 +38,11 @@
             <AppenderRef ref="CONSOLE"/>
             <AppenderRef ref="FILE_APPENDER"/>
         </Logger>
-        <Logger name="reactor.netty.http.client.HttpClient" level="TRACE" additivity="false">
+        <Logger name="reactor.netty.http.client.HttpClient" level="INFO" additivity="false">
             <AppenderRef ref="CONSOLE"/>
             <AppenderRef ref="FILE_APPENDER"/>
         </Logger>
-        <Logger name="org.zalando.logbook.Logbook" level="TRACE" additivity="false">
-            <AppenderRef ref="CONSOLE"/>
-            <AppenderRef ref="FILE_APPENDER"/>
-        </Logger>
-        <Logger name="com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver" level="WARN" additivity="false">
-            <AppenderRef ref="CONSOLE"/>
-            <AppenderRef ref="FILE_APPENDER"/>
-        </Logger>
-        <Logger name="org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator" level="WARN" additivity="false">
+        <Logger name="org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator" level="INFO" additivity="false">
             <AppenderRef ref="CONSOLE"/>
             <AppenderRef ref="FILE_APPENDER"/>
         </Logger>
@@ -58,7 +50,7 @@
             <AppenderRef ref="CONSOLE"/>
             <AppenderRef ref="FILE_APPENDER"/>
         </Logger>
-        <Logger name="org.springframework.cloud.config" level="DEBUG" additivity="false">
+        <Logger name="org.springframework.cloud.config" level="INFO" additivity="false">
             <AppenderRef ref="CONSOLE"/>
             <AppenderRef ref="FILE_APPENDER"/>
         </Logger>
