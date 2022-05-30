@@ -7,6 +7,7 @@ eureka:
     prefer-ip-address: true
 
 spring:
+#  profiles.active: kubernetes
   cloud:
     gateway:
       default-filters:
@@ -56,3 +57,10 @@ management:
       enabled: true
     health.show-details: always
     loggers.enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    distribution:
+      percentiles-histogram:
+        "[http.server.requests]": true

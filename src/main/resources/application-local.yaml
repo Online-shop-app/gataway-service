@@ -1,9 +1,11 @@
 eureka:
   client:
-    serviceUrl.defaultZone: 'http://localhost:8761/eureka/'
+    serviceUrl.defaultZone: 'http://localhost:8761/eureka'
 
 spring:
-  cloud.discovery.enabled: true
+  cloud:
+    discovery.enabled: true
+    kubernetes.enabled: false
   zipkin.enabled: false
   boot.admin.client.enabled: false
   boot.admin.client.url: 'http://localhost:5050'
@@ -12,7 +14,6 @@ spring:
       keycloak:
         client-id: chat-client
         client-secret: 'f1b4f4c7-7d2d-4b16-af5d-7ead0d076f03'
-#        client-secret: ${ONLINE_SHOP_CHAT_CLIENT_SECRET} ENV NOT WORKING
     provider:
       keycloak:
         issuer-uri: 'http://localhost:7070/auth/realms/online-shop'

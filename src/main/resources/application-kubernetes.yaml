@@ -1,0 +1,28 @@
+eureka.client.enabled: false
+
+spring:
+  cloud:
+    discovery:
+      enabled: true
+    kubernetes:
+      enabled: true
+      discovery:
+        all-namespaces: true
+        service-labels:
+          spring-boot: true
+    loadbalancer:
+      enabled: false
+  zipkin:
+    enabled: true
+    base-url: 'http://zipkin-service:9411'
+  boot.admin.client:
+    enabled: true
+    url: 'http://admin-service:5050'
+  security.oauth2.client:
+    registration:
+      keycloak:
+        client-id: chat-client
+        client-secret: ''
+    provider:
+      keycloak:
+        issuer-uri: 'http://keycloak-service:7070/auth/realms/online-shop'
